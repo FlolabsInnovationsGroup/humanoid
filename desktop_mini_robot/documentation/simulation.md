@@ -22,6 +22,9 @@ The simulation world came from the [Gazebo Open Models](https://app.gazebosim.or
 
 The goal of the simulation world is to emulate the desk environment that the robot will move on. For that, the [desk model](https://app.gazebosim.org/OpenRobotics/fuel/models/Office%20Desk) was chosen to be the world model.
 
+<img width="488" height="392" alt="image" src="https://github.com/user-attachments/assets/9e100116-7a2a-4c85-b230-ddf4a43844a2" />
+
+
 After choosing the model, it was opened on the simulator by running:
 
 ```
