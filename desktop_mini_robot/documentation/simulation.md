@@ -10,11 +10,18 @@
 
 ## 1. Simulation workspace components
 
-First of all, the simulator used is [Gazebo](https://gazebosim.org/home). 
+First of all, the simulator used is [Gazebo](https://gazebosim.org/home). The simulation is breaken down into world and robot.
+
+## 2. How to run the simulation
+
+After instaling all the ROS workspace dependencies (as shown in the project's README.md file), in the root folder execute the following command to run the simulation on Gazebo by ROS:
+```
+ros2 launch ros_workspace simulation_launch.py
+```
 
 ## 3. Creation of the simulation workspace
 
-The simulation workspace was first created on Gazebo Harmonic in Ubuntu 22 OS.
+The simulation workspace was first created on Gazebo Harmonic in Ubuntu 22 OS. After creating the world, the ROS 2 workspace was created to smoothly launch the simulation with all simulation models integrated and to prepare for the future development.
 
 ### Simulation world
 
@@ -32,5 +39,6 @@ gz sim --verbose 3
 
 Followed by creating an empty project, opening the Resource Spawner, searching by Office Desk, downloading the resource and adding it to the world simulation. 
 
+Once chosen the model to be used, the world was saved as a SDF (Simulation Description Format) file.  
+To mantain reproducibility, the chosen model files saved locally was added to a folder called desk (/simulation/desk). 
 
-Once chosen the model to be used, the world was saved as a SDF (Simulation Description Format) file.
