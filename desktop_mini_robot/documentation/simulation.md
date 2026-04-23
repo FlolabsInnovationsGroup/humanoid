@@ -43,5 +43,20 @@ gz sim --verbose 3
 Followed by creating an empty project, opening the Resource Spawner, searching by Office Desk, downloading the resource and adding it to the world simulation. 
 
 Once chosen the model to be used, the world was saved as a SDF (Simulation Description Format) file.  
-To mantain reproducibility, the chosen model files saved locally was added to a folder called desk (/models/desk). 
+To maintain reproducibility, the chosen model files saved locally was added to a folder called desk (/models/desk). 
+
+### Simulation robot
+
+At first, the goal to simulate the robot is to test the embedded software. For that, there is no need to create a realistic robot model. The model created focus on the main components of the robot: wheels, infrared sensor, simplified body. Later, a fully detailed 3D design will replace our simple model.
+
+The simplistic model contains two wheels (one wheel in each side), a bridge between wheels with the infrared sensor and rectangle box above it representing the body. The wheels have a 6 cm diameter and are 2 cm wide. They are connected by a rectangular, we are calling it wheels bridge, of 10 cm x 1 cm x 1 cm. In the middle of this wheels bridge lays the infrared sensor of 0.45 cm x 0.20 cm x 0.15 cm. Above the wheels bridge there is a second rectangular bridge to connect the bottom to the body of the robot. This second rectangular bridge is of 2 cm x 2 cm x 1cm. The body above the second bridge is of 8 cm x 14 cm x 4 cm. The below image showcases the robot's parts and dimensions. 
+
+![Desktop mini robot simple simulation model](images/simple_robot_model_diagram.png)
+
+To simulate the model, a URDF file was created with all the representations needed to apply the design on the last image. To add the model to the simulation world, a model.config file was created with the reference to the urdf file that will be read by Gazebo. 
+
+To view only the robot created, the rViz tool was used. For that a launch file was created and it is used by running 
+```
+ros2 launch ros_workspace robot_rviz_view_launch.py
+```
 
