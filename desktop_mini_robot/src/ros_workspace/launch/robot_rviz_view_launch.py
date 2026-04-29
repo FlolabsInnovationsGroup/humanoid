@@ -1,4 +1,5 @@
 import os
+import xacro
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
@@ -6,10 +7,11 @@ from launch_ros.actions import Node
 def generate_launch_description():
     package_name = 'ros_workspace'
     
-    urdf_file = os.path.join(get_package_share_directory(package_name), 'models', 'robot', 'model.urdf')
+    urdf_file = os.path.join(get_package_share_directory(package_name), 'models', 'robot', 'model.urdf.xacro')
     rviz_config = os.path.join(get_package_share_directory(package_name), 'config', 'robot_view.rviz')
 
-    robot_description_content = open(urdf_file).read()
+    doc = xacro.process_file(urdf_file)
+    robot_description_content = doc.toxml()
 
     return LaunchDescription([
         Node(
