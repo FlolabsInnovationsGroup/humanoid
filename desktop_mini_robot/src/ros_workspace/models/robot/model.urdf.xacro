@@ -38,6 +38,9 @@
   </inertial>
 </xacro:macro>
 
+<!-- Gazebo simulation properties -->
+<xacro:include filename="$(find ros_workspace)/models/robot/model.gazebo" />
+
 <link name="dummy">
 </link>
 <joint name="dummy_joint" type="fixed">
