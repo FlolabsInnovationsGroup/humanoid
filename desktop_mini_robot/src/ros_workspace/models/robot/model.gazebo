@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+
+<robot>
+
+    <!-- Robot's components -->
+    <gazebo reference="body_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+     <gazebo reference="base_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+     <gazebo reference="wheel_right_back_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+     <gazebo reference="wheel_left_back_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+     <gazebo reference="wheel_right_front_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+     <gazebo reference="wheel_left_front_link">
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <!-- IR sensor -->
+    <gazebo reference="ir_sensor_link">
+        <sensor name="ir_sensor" type="gpu_lidar">
+            <always_on>true</always_on>
+            <visualize>true</visualize>
+            <update_rate>20</update_rate>
+            <topic>ir_sensor/scan</topic>
+            <gz_frame_id>ir_sensor_link</gz_frame_id>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>1</samples>
+                        <resolution>1</resolution>
+                        <min_angle>0</min_angle>
+                        <max_angle>0</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.01</min>
+                    <max>0.5</max>
+                    <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+        </sensor>
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- Robot's wheels controller -->
+    <gazebo>
+      <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <left_joint>wheel_left_front_joint</left_joint>
+        <left_joint>wheel_left_back_joint</left_joint>
+        <right_joint>wheel_right_front_joint</right_joint>
+        <right_joint>wheel_right_back_joint</right_joint>
+        <wheel_separation>0.12</wheel_separation>
+        <wheel_radius>0.02</wheel_radius>
+        <odom_publish_frequency>10</odom_publish_frequency>
+        <topic>/cmd_vel</topic>
+        <odom_topic>/odom</odom_topic>
+        <frame_id>odom</frame_id>
+        <child_frame_id>base_link</child_frame_id>
+      </plugin>
+    </gazebo>
+
+</robot>
