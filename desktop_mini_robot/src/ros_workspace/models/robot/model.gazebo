@@ -39,6 +39,38 @@
         <material>Gazebo/Gray</material>
     </gazebo>
 
+    <!-- IR sensor -->
+    <gazebo reference="ir_sensor_link">
+        <sensor name="ir_sensor" type="gpu_lidar">
+            <always_on>true</always_on>
+            <visualize>true</visualize>
+            <update_rate>20</update_rate>
+            <topic>ir_sensor/scan</topic>
+            <gz_frame_id>ir_sensor_link</gz_frame_id>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>1</samples>
+                        <resolution>1</resolution>
+                        <min_angle>0</min_angle>
+                        <max_angle>0</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.01</min>
+                    <max>0.5</max>
+                    <resolution>0.01</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+        </sensor>
+        <material>Gazebo/Black</material>
+    </gazebo>
+
     <!-- Robot's wheels controller -->
     <gazebo>
       <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">

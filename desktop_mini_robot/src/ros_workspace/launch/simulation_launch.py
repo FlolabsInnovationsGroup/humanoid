@@ -69,6 +69,7 @@ def generate_launch_description():
             '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
             '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
+            '/ir_sensor/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
         ]
     )
 
@@ -77,5 +78,5 @@ def generate_launch_description():
         gz_sim_launch,
         robot_state_publisher,
         spawn_robot,
-        ros_gz_bridge
+        ros_gz_bridge,
     ])
