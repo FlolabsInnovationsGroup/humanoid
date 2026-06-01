@@ -21,6 +21,10 @@
 <xacro:property name="ir_sensor_y_dim" value="0.02"/>
 <xacro:property name="ir_sensor_z_dim" value="0.01"/>
 
+<!-- Lidar dimensions -->
+<xacro:property name="lidar_radius" value="0.03"/>
+<xacro:property name="lidar_length" value="0.02"/>
+
 <!-- Material density -->
 <xacro:property name="base_density" value="2710.0"/>
 <xacro:property name="wheel_density" value="2710.0"/>
@@ -227,6 +231,35 @@
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <mass value="0.01"/>
         <inertia ixx="1e-6" ixy="0" ixz="0" iyx="0" iyy="1e-6" iyz="0" izx="0" izy="0" izz="1e-6"/>
+    </inertial>
+</link>
+
+<!-- Lidar 2D link and joint -->
+<joint name="lidar_joint" type="fixed">
+    <parent link="body_link"/>
+    <child link="lidar_link"/>
+    <origin xyz="0 0 ${body_link_z_dim/2 + lidar_length/2}" rpy="0 0 0"/>
+</joint>
+<link name="lidar_link">
+    <visual>
+        <geometry>
+            <cylinder radius="${lidar_radius}" length="${lidar_length}"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <material name="blue">
+            <color rgba="0 0 0.8 1"/>
+        </material>
+    </visual>
+    <collision>
+        <geometry>
+            <cylinder radius="${lidar_radius}" length="${lidar_length}"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <mass value="0.05"/>
+        <inertia ixx="1e-5" ixy="0" ixz="0" iyx="0" iyy="1e-5" iyz="0" izx="0" izy="0" izz="1e-5"/>
     </inertial>
 </link>
 

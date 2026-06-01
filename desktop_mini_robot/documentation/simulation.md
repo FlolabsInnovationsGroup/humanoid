@@ -59,3 +59,5 @@ ros2 launch ros_workspace robot_rviz_view_launch.py
 ```
 
 To control the robot's wheels, the skid steer drive plugin from [Gazebo's ROS plugins list](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#Pluginsavailableingazebo_plugins) was added in the model.gazebo file which connects the model created and the simulation.
+
+A LiDAR sensor was added at the top of the robot's body to allow the robot to perceive its environment. This is critical for navigation and obstacle avoidance purposes.
